@@ -20,7 +20,8 @@ def main_view(request):
             title= e.select_one('a > div.list__thumb > img')['alt']
             image = e.select_one('a > div.list__thumb > img')['src']
             date = e.select_one('a > div.list__term').text.split(':')[1]
-            a = title,image,date
+            url = e.select_one('a')['href']
+            a = title,image,date,url
             event_list.append(a)
     return render(request, 'main.html',{'events': event_list})
 
@@ -42,9 +43,8 @@ def call_abrel(request):
 
         
 def test(request):
-    jsonObject = json.loads(request.body)
-    a = jsonObject.get('title')
-    print(a[0:2])
-
-    return JsonResponse(jsonObject)
+    if request.method == "POST":
+        data = json.loads(request.body)
+        a = data.get('title')
+        return JsonResponse(data)
 

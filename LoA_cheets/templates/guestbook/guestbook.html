@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<p>
+    <form action='/guestbook/' method='post'>
+        {% csrf_token %}
+        <div class="form-group mb-2">
+            <input placeholder='닉네임' name ='author' id='author' value='모코코'> </input>
+            <textarea class="form-control" style="resize: none" name='content' id="content"></textarea>
+        </div>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary" style="float:right;">작성하기</button>
+    
+    </form>
+    </p>
+{% for cmt in comments %}
+    <div class="col-md-12 mb-2">
+        <div class="card">
+            <div class="card-body">
+ 
+                <div class="media">
+                    <div class="media-body">
+                        <h5 class="mt-0">{{ cmt.content }}</h5>
+                    </div>
+                    <div style="text-align: right">
+                        <span style="font-size: small">{{ cmt.author }}  {{ cmt.created_date|timesince }} 전</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+
+{%endblock%}

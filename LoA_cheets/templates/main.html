@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +30,21 @@
             margin-top : 25px
         }
     </style>
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> {% endcomment %}
+    {% load static %}
+    <script src="{% static 'js/cheat_boss.js' %}"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    </nav>
+
+    
     <div class="container" style="display:flex; width:100%;justify-content: space-between;">
         <a> 유물세트</a>
         <a> 클리어 정보</a>
         <a class="navbar-brand" href="/">컨닝 군단장</a>
         <a> 보상</a>
-        <a> 방명록</a>
+        <a href='/guestbook'> 방명록</a>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -45,6 +53,7 @@
             </ul>
         </div>
         </div>
+    
     {% block content %}
     
     <div style="background-color: grey; float: left; width:100px; padding:10px; ">
@@ -56,9 +65,11 @@
     <div style="display:flex; height:500px; flex-direction: column;flex-wrap: wrap;">
         {% for e in events%}
         <div style=" width:100px; float: left; width: 200px; padding:10px">
-                <img src= {{e.1}} style="width:200px">
-                <p>{{e.0}}</p>
-                <p><strong>이벤트 기간:</strong> {{e.2}}</p>
+            <a href="https://lostark.game.onstove.com/{{e.3}} " target="_blank">    
+            <img src= {{e.1}} style="width:200px">
+            <p>{{e.0}}</p>
+            <p><strong>이벤트 기간:</strong> {{e.2}}</p>
+            </a>
         </div>
         {% endfor %}
     </div>
