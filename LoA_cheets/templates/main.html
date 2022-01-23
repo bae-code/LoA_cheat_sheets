@@ -31,9 +31,12 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container" style="display:flex; width:100%;justify-content: space-between;">
+        <a> 유물세트</a>
+        <a> 클리어 정보</a>
         <a class="navbar-brand" href="/">컨닝 군단장</a>
+        <a> 보상</a>
+        <a> 방명록</a>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -41,22 +44,25 @@
                 
             </ul>
         </div>
-                <form action='/raid/' method='post'>
-                    {% csrf_token %}
-                    <button href='/valtan'>발탄</button>
-                    <button>쿠크</button>
-                    <button>아브</button>
-                    <button>비아</button>
-                    
-                    
-                </form>
-                <h2>{{POST}}</h2>
-
+        </div>
+    {% block content %}
+    
+    <div style="background-color: grey; float: left; width:100px; padding:10px; ">
+        <p><a href="{% url 'valtan' %}">발탄<a></p>
+        <p><a href="{% url 'Biackiss' %}">비아<a></p>
+        <p><a href="{% url 'Kouku' %}">쿠크세이튼<a></p>
+        <p><a href="{% url 'Abrelshud' %}">아브렐슈드</a></p>
+        </div>
+    <div style="display:flex; height:500px; flex-direction: column;flex-wrap: wrap;">
+        {% for e in events%}
+        <div style=" width:100px; float: left; width: 200px; padding:10px">
+                <img src= {{e.1}} style="width:200px">
+                <p>{{e.0}}</p>
+                <p><strong>이벤트 기간:</strong> {{e.2}}</p>
+        </div>
+        {% endfor %}
     </div>
-</nav>
-{% block content %}
-
-{% endblock %}
+    {% endblock %}
 
 </body>
 </html>
