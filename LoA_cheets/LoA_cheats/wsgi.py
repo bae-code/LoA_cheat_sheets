@@ -1,5 +1,5 @@
 """
-WSGI config for LoA_cheets project.
+WSGI config for LoA_cheats project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LoA_cheets.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LoA_cheats.settings')
 
 application = get_wsgi_application()
