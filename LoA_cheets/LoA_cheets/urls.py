@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('',include('guestbook.urls')),
+    path('',include('clearinfo.urls')),
+    
 ]
